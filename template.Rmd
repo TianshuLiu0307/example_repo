@@ -1,0 +1,59 @@
+---
+title: "Simple document"
+author:
+output: 
+  html_document:
+    toc: TRUE
+---
+
+```{r, echo=FALSE, message=FALSE}
+library(tidyverse)
+```
+
+
+
+
+I'm an R Markdown document!
+
+# Section 1
+
+Here's a **code chunk** that samples from a *normal distribution*:
+
+```{r}
+samp = rnorm(100)
+samp
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too! The mean is `r mean(samp)`.
+
+# Section 3
+
+This section is used to generate random data, and show in scatterplot.
+
+```{r chunk_scatterplot, echo=TRUE}
+plot_df =
+  tibble(
+    x = rnorm(n = 100),
+    y = 1 + 2 * x + rnorm(100)
+  )
+plot_df
+ggplot(plot_df, aes(x = x, y =y)) + geom_point()
+```
+
+This is a comment.
+
+
+# Learning Assessment
+
+```{r Lrnng_Assmnt, echo=FALSE}
+la_df = 
+  tibble(
+    norm = rnorm(n = 500, mean = 1),
+    logical = norm > 0,
+    abs_norm = abs(norm)
+  )
+ggplot(la_df, aes(x = abs_norm)) + geom_histogram(bins = 50)
+```
